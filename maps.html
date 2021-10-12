@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Directions Service</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>       41.96665755189328, -87.63765756778052
+  <body>
+    <div id="map"></div>
+    <script>              41.96692877799293, -87.63913814713295
+      function initMap() {
+        var chicago = {lat: 41.93579920147587, lng: -87.62558945126858}
+        var montroseBeach = {lat: 41.96665755189328, lng: -87.63765756778052}
+        var evanton={lat: 42.0451, lng:  -87.6877}
+        var winetka={lat:42.12059601269178, lng:-87.74014172892474}
+        var lakeForest={lat:42.28153680922657, lng:-87.84128374208049}
+        var pleasPari={lat:42.59572615237179, lng:-87.95101774497459}
+        var silvania={lat:42.70329894883249,lng: -87.95577117466517}
+        var AW={lat:42.77879942336445,lng: -87.94957828679902}
+        var manheim={lat:42.835039865941766,lng: -87.95404264863909}
+        var maitlandPark={lat:42.946180269894576, lng:-87.92966467898903}
+        var machesneyPark={lat:42.349128229495896,lng: -89.03408683284424}
+        
+        var franklin={lat:42.88852422502933,lng: -88.01370631485962}    //second route
+        var windLake={lat:42.82978321159392, lng:-88.15866422412938}
+        var payne={lat:42.75096607108875, lng:-88.297583532119}
+        var earthStone={lat:42.69951732605435, lng:-88.40559320023884}
+        var geneva={lat:42.56228118823384, lng:-88.58139178218411}
+        var sharon={lat:42.50707807736532, lng:-88.73021251630999}
+        var rockCut={lat:42.358465220996024, lng:-88.98546512957206}
+
+
+
+        var rockFort = {lat: 42.29876165343501, lng:  -89.12637408121842}   //last loc
+
+       
+        
+        // var southport_park={lat:42.561967246189504, lng:-87.81285699421124}
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: chicago
+        }); 
+       var marker1 = new google.maps.Marker({
+         position: chicago,
+         icon:{
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+         },
+         map : map
+
+         });
+       var marker2 = new google.maps.Marker({
+         position: montroseBeach,
+         map : map
+         });
+       var marker3 = new google.maps.Marker({
+         position: evanton,
+         map : map
+         });
+      var marker4 = new google.maps.Marker({
+         position: winetka,
+         map : map
+         });
+     var marker5 = new google.maps.Marker({
+         position: lakeForest,
+         map : map
+         });
+    var marker6 = new google.maps.Marker({
+         position: pleasPari,
+         map : map
+          });
+
+   var marker7 = new google.maps.Marker({
+         position: silvania,
+         map : map
+         });
+
+    var marker8 = new google.maps.Marker({
+         position: AW,
+         map : map
+         });
+    var marker9 = new google.maps.Marker({
+         position: manheim,
+         map : map
+         });
+    var marker10 = new google.maps.Marker({
+      icon:{
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+         },
+         position: maitlandPark,
+         map : map
+         });
+      
+     
+      
+
+      var marker11 = new google.maps.Marker({
+      
+         position: franklin,
+         map : map
+         });
+      
+      var marker12 = new google.maps.Marker({
+      
+         position: windLake,
+         map : map
+         });
+      
+     var marker13 = new google.maps.Marker({
+         position: payne,
+         map : map
+         });
+
+
+    var marker14=new google.maps.Marker({
+      position: earthStone,
+         map : map
+    });
+
+    var marker15=new google.maps.Marker({
+      position: geneva,
+         map : map
+    });
+
+    var marker16=new google.maps.Marker({
+      position: sharon,
+         map : map
+    });
+
+    var marker17=new google.maps.Marker({
+      position: rockCut,
+         map : map
+    });
+
+
+    var markerlast = new google.maps.Marker({
+
+        icon:{
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+         },
+         position: rockFort,
+         map : map
+         });
+
+        //  var marker9 = new google.maps.Marker({
+        //  position: manheim,
+        //  map : map
+        //  });
+        
+       
+        var flightPath = new google.maps.Polyline({
+          path:[chicago,montroseBeach,evanton,winetka,lakeForest,pleasPari,silvania,AW,manheim,maitlandPark,franklin,windLake,payne,earthStone,geneva,sharon,rockCut,rockFort],
+          strokeColor:"#0000FF",
+          strokeOpacity:0.8,
+          strokeWeight:2
+        });
+        flightPath.setMap(map)
+        //InfoWindow
+        var infowindow = new google.maps.InfoWindow({
+          content:"Namaste World!"
+        });
+        //marker click listener
+        google.maps.event.addListener(marker2, 'click', function() {
+          infowindow.open(map,marker2);
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZOTcZdKSCKeyM-1tC4Ra5-6-6qTeE7H4&callback=initMap">
+    </script>
+  </body>
+</html>

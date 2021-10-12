@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Directions Service</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>               
+  <body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+        var location1 = {lat: 19.0760, lng: 72.8777}
+       
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location1
+        });
+
+        function calcRoute() {
+            var start = document.getElementById('origin').value;
+            var end = document.getElementById('destination').value;
+            var request = {
+                origin: mumbai,
+                destination: thane,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+        }
+        
+    } 
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZOTcZdKSCKeyM-1tC4Ra5-6-6qTeE7H4&callback=initMap">
+    </script>
+  </body>
+</html>
